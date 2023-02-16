@@ -3,17 +3,14 @@ import { makeStyles } from "@mui/styles";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+
 import background from "../../assets/images/background.jpg";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import SendIcon from "@mui/icons-material/Send";
-import Box from "@mui/material/Box";
+
 import ButtonArrow from "../ButtonArrow";
-// import Input from "../../InputField";
-// import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import Input from "../../InputField";
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -21,24 +18,25 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     backGroundRepeat: "no-repeat",
-    height: "60em",
+    height: "50em",
     paddingLeft: "50px",
   },
 }));
 
 const Contact = () => {
   const classes = useStyles();
-  const [name, setName] = useState("");
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [emailHelper, setEmailHelper] = useState("");
 
   const [phone, setPhone] = useState("");
   const [phoneHelper, setPhoneHelper] = useState("");
-
   const [message, setMessage] = useState("");
 
-  const handlerChange = (event) => {
+
+
+  const handlerChange = event => {
     let valid;
 
     switch (event.target.id) {
@@ -70,55 +68,55 @@ const Contact = () => {
         break;
     }
   };
+  // const handlerChange = (event) => {
+  //   let valid;
 
+  //   switch (event.target.id) {
+  //     case "email":
+  //       setEmail(event.target.value);
+  //       valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+  //         event.target.value
+  //       );
 
- 
-  const MySwal = withReactContent(Swal);
+  //       if (!valid) {
+  //         setEmailHelper("Invalid email");
+  //       } else {
+  //         setEmailHelper("");
+  //       }
+  //       break;
+  //     case "phone":
+  //       setPhone(event.target.value);
+  //       valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(
+  //         event.target.value
+  //       );
 
-  function showMessage() {
-  
-    
-   MySwal.fire({
-  position: 'center',
-  icon: 'success',
-  title: 'Contact Form  Submit',
-  showConfirmButton: false,
-  timer: 1500
-})
-  }
- 
-
-  const onSubmit = (e) => {
-    e.preventDefault()
-    console.log(name,email,phone,message);
-  };
+  //       if (!valid) {
+  //         setPhoneHelper("Invalid email");
+  //       } else {
+  //         setPhoneHelper("");
+  //       }
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
   return (
     <>
-      <Grid container direction="row" style={{ marginLeft: "30px" }}>
+      <Grid container direction="row" style={{ marginLeft: "25px" }}>
         <Grid item container direction="column" lg={3}>
-          <Box>
           <Grid item>
-            <Typography variant="h2">Contact Us</Typography>
-            </Grid>
-            <Grid item>
-            <Typography variant="body1" sx={{fontSize:'20px', color: "#D61355"}}>We are Waiting </Typography>
-
-            </Grid>
-    
-          <Grid item container style={{ color: "#D61355", marginTop: "20px" }}>
+            <Typography variant="h2" style={{ lineHeight: " 1" }}>
+              Contact Us
+            </Typography>
+            <Typography variant="body1">We are Waiting </Typography>
+          </Grid>
+          <Grid item container style={{ color: "#D61355" }}>
             <Grid item>
               <PhoneIcon />
             </Grid>
 
             <Grid item style={{ color: "black" }}>
-              <Typography variant="body1">
-                <a
-                  href="tel:5555555555"
-                  style={{ textDecoration: "none", color: "inherit", marginLeft:"20px" }}
-                >
-                  (555) 555-5555
-                </a>
-              </Typography>
+              <Typography variant="body1">(555) 555-5555</Typography>
             </Grid>
           </Grid>
 
@@ -127,88 +125,68 @@ const Contact = () => {
               <EmailIcon />
             </Grid>
 
-            <Grid item sx={{ color: "black" }}>
-              <Typography variant="body1">
-                <a
-                  href="mailto:houseparty@gmail.com"
-                  style={{ textDecoration: "none", color: "inherit",  marginLeft:"20px"  }}
-                >
-                  zachary@gmail.com
-                </a>
-              </Typography>
+            <Grid item style={{ color: "black" }}>
+              <Typography variant="body1">houseparty@gmail.com</Typography>
             </Grid>
           </Grid>
 
-          <form onSubmit={onSubmit}>
-            <Grid item container >
-              <Grid item sx={{ marginBottom: "0.5em", marginTop: "1em" }}>
-                <TextField
-                  label="Name"
-                  id="name"
-                  fullWidth
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                />
-              </Grid>
-
-              <Grid item sx={{ marginBottom: "0.5em", marginTop: "1em" }}>
-                <TextField
-                  label="Email"
-                  error={emailHelper.length !== 0}
-                  helperText={emailHelper}
-                  id="email"
-                  fullWidth
-                  value={email}
-                  onChange={handlerChange}
-                />
-              </Grid>
-
-              <Grid item sx={{ marginBottom: "0.5em", marginTop: "1em" }}>
-                <TextField
-                  label="Phone"
-                  helperText={phoneHelper}
-                  error={phoneHelper.length !== 0}
-                  id="phone"
-                  fullWidth
-                  value={phone}
-                  onChange={handlerChange}
-                />
-              </Grid>
-
-              <Grid item sx={{ marginBottom: "0.5em", marginTop: "1em" }}>
-                <TextField
-                  InputProps={{ disableUnderline: true }}
-                  value={message}
-                  label="Enter a message"
-                  className={classes.message}
-                  multiline
-                  fullWidth
-                  rows={8}
-                  id="message"
-                  onChange={(event) => setMessage(event.target.value)}
-                />
-              </Grid>
+          <Grid item container>
+            <Grid item>
+              <Input
+                label="Name"
+                requied
+                id="name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                sx={{ marginBottom: "10px" }}
+              />
             </Grid>
-
+            <Grid item>
+              <Input
+                requied
+                label="Email"
+                error={emailHelper.length !== 0}
+                heplText={emailHelper}
+                id="email"
+                value={email}
+                onChange={handlerChange}
+                sx={{ marginBottom: "10px" }}
+              />
+            </Grid>
+            <Grid item>
+              <Input
+                requied
+                label="Phone"
+                error={phoneHelper.length !== 0}
+                heplText={phoneHelper}
+                value={phone}
+                onChange={handlerChange}
+              />
+            </Grid>
+            <Grid item>
+              <Input
+                label="Enter a Text"
+                value={message}
+                multiline
+                rows={5}
+                onChange={(event) => setMessage(event.target.value)}
+              />
+            </Grid>
+          </Grid>
+          <Grid item>
             <Button
               variant="contained"
-              type='submit'
-              onClick={showMessage}
               style={{
                 backgroundColor: " #D61355",
                 fontWeight: "bold",
-                borderRadius: "50px",
-               padding: '15px, 30px'
+                marginTop: "20px",
               }}
             >
               Send Message
               <SendIcon />
             </Button>
-          </form>
-          </Box>
-        
+          </Grid>
         </Grid>
-
         <Grid item container className={classes.background} lg={9}>
           <Grid item>
             <Grid container direction="column">

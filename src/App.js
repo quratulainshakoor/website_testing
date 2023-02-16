@@ -1,5 +1,6 @@
+import React, {useState, useEffect} from "react";
 import { ThemeProvider } from "@mui/material/styles";
-// import { Button } from "@mui/material";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import theme from "./theme";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./componients/screens/Home/index";
@@ -14,16 +15,56 @@ import Anroid from "./componients/screens/Services/menu/anroid";
 import AOS from "aos";
 import Layout from "./layout";
 import Faqs from "./componients/screens/Faqs/index";
-
+// import { Triangle } from 'react-loader-spinner';
 // import { Login, Signup } from "./screens";
+import Box from "@mui/material/Box";
+
+
 
 AOS.init();
 function App() {
+  const [loading, setLoading] = useState(false);
+
+
+  useEffect (() => {
+    setLoading(true);
+    setTimeout(()=> {
+      setLoading(false);
+    }, 1000);
+  }, [])
   return (
     <>
+
+
+  {
+    loading ? (
+
+      <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+     
+        minHeight: " 100vh",
+      
+      }}
+    >
+       <ClimbingBoxLoader   
+   
+    loading={loading}
+    color={"#FFBA60"}
+    size={30}
+  />
+    </Box>
+     
+    )
+    : 
+    (
+
       <ThemeProvider theme={theme}>
+
         <BrowserRouter>
-          {/* <Header /> */}
+        
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
@@ -36,14 +77,19 @@ function App() {
               <Route path="service/anroid" element={<Anroid />} />
               <Route path="service/apps" element={<Apps />} />
             </Route>
-            {/* <Route element={<ErrorLayout />}>
-              <Route path="*" element={<Error />} />
-            </Route> */}
+      
                   <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>
-        {/* <Footer /> */}
+  
+    
       </ThemeProvider>
+    )
+
+       }  
+
+      
+
     </>
   );
 }

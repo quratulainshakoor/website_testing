@@ -10,13 +10,13 @@ import Grid from "@mui/material/Grid";
 const useStyles = makeStyles((theme) => ({
   footer: {
     // backgroundColor: theme.palette.common.orange,
-    backgroundColor: "#FFBA60",
+    backgroundColor: "#0B7289",
     width: "100%",
     zIndex: 1302,
     position: "relative",
     color: "white",
-    fontFamily :' Raleway',
-    fontWeight: "bold"
+    fontFamily: " Raleway",
+    fontWeight: "bold",
   },
 
   // adornment: {
@@ -30,40 +30,38 @@ const useStyles = makeStyles((theme) => ({
   //   },
   // },
 
-  curveBg: {
-    position: "relative",
+  // curveBg: {
+  //   position: "relative",
 
-    "&:before": {
-      position: "absolute",
-      content: '""',
-      top: 0,
-      left: 0,
-      height: "100%",
-      width: "100%",
-      backgroundImage:
-        "linear-gradient(110deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 100%)",
-      filter: "blur(.8px)",
-    },
-  },
+  //   "&:before": {
+  //     position: "absolute",
+  //     content: '""',
+  //     top: 0,
+  //     left: 0,
+  //     height: "100%",
+  //     width: "100%",
+  //     backgroundImage:
+  //       "linear-gradient(110deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 100%)",
+  //     filter: "blur(.8px)",
+  //   },
+  // },
 
   logo: {
-    width: "200px",
+    width: "250px",
     marginTop: "40px",
     marginBottom: "20px",
+    marginLeft : '10px'
   },
-
 
   icon: {
     height: "2em",
-    width: " 2em",
-    
+    width: " 3em",
+   
   },
-  socailContainer:{
-    paddingRight:"20px"
+  socailContainer: {
+    paddingRight: "20px",
+  
   },
-
-
-
 }));
 const Footer = () => {
   const classes = useStyles();
@@ -72,42 +70,43 @@ const Footer = () => {
     <>
       <footer className={classes.footer}>
         <Grid container>
-          <Grid
+          {/* <Grid
             item
             xs={3}
             sx={{
               padding: 20,
+              display:{xs:'none' ,md:'flex'}
             }}
             className={classes.curveBg}
           >
-            Home
-          </Grid>
+           
+          </Grid> */}
 
-          <Grid item xs={9}>
+          <Grid item xs={12}>
             <Grid item>
               <img alt="Logo" src={Logo} className={classes.logo} />
             </Grid>
             <Grid container spacing={2}>
-              <Grid item xs>
+              <Grid item xs={12} sm={6} md={3}>
                 <p>Home</p>
               </Grid>
-              <Grid item xs>
+              <Grid item xs={12} sm={6} md={3}>
                 <p>Portfolio</p>
                 <p>Designs</p>
                 <p>Projects</p>
               </Grid>
-              <Grid item xs>
+              <Grid item xs={12} sm={6} md={3}>
                 <p>Services</p>
                 <p>App Development</p>
                 <p>Website Development</p>
                 <p>Anroid Development</p>
               </Grid>
-              <Grid item xs>
+              <Grid item xs={12} sm={6} md={3}>
                 <p>About Us</p>
                 <p>Vision</p>
                 <p>Mision</p>
               </Grid>
-              <Grid item xs>
+              <Grid item xs={12} sm={6} md={3}>
                 <p>Contact Us</p>
               </Grid>
             </Grid>
@@ -129,6 +128,7 @@ const Footer = () => {
                   alt="facebook logo"
                   src={facebook}
                   className={classes.icon}
+             
                 />
               </Grid>
               <Grid
@@ -160,7 +160,6 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Grid>
-        
       </footer>
     </>
   );

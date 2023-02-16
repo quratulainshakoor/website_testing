@@ -51,7 +51,7 @@ export default function ServicesCard({ data, handleClick }) {
               >
                 {data.name}
               </Typography>
-              <Typography
+              {/* <Typography
                 variant="body2"
                 color="text.primary"
                 sx={{
@@ -63,7 +63,7 @@ export default function ServicesCard({ data, handleClick }) {
                 }}
               >
                 {data.description}
-              </Typography>
+              </Typography> */}
             </CardContent>
 
             <Box sx={{ textAlign: "center" }}>

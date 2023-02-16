@@ -1,5 +1,5 @@
 import React from "react";
-import HeroImage from "../../assets/images/hero animation.png";
+import HeroImage from "../../assets/images/heroimage.avif";
 //  import { makeStyles } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -53,7 +53,7 @@ const Home = () => {
             <Grid item xs sx={{ textAlign : "center"}}>
               <div
                 data-aos="fade-left"
-                data-aos-offset="200"
+                data-aos-offset="100"
                 data-aos-delay="50"
                 data-aos-duration="1000"
                 data-aos-easing="ease-in-out"
@@ -65,7 +65,7 @@ const Home = () => {
                   src={HeroImage}
                   alt="herowall"
        
-                  width={"300px"}
+                  width={"500px"}
                 />
               </div>
             </Grid>

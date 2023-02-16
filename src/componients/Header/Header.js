@@ -7,7 +7,8 @@ import { makeStyles } from "@mui/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Button from "@mui/material/Button";
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import { Link } from "react-router-dom";
 import {
   Box,
@@ -37,7 +38,7 @@ function ElevationScroll(props) {
 
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
-    ...theme.mixins.toolbar,
+    // ...theme.mixins.toolbar,
     marginBottom: "0em",
   },
 
@@ -57,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px 10px",
     fontSize: "16px",
     color: "#000",
-   
   },
   // button: {
   //   ...theme.Typography.estimate,
@@ -109,11 +109,7 @@ export default function Header(props) {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      Home 
-      About
-      Services
-      Contact
-
+      Home About Services Contact
     </Box>
   );
 
@@ -127,24 +123,26 @@ export default function Header(props) {
 
     setDrawerOpen(open);
   };
-  // useEffect(() => {
-  //   if (window.location.pathname === "/" && value !== 0) {
-  //     setValue(0);
-  //   } else if (window.location.pathname === "/about" && value !== 1) {
-  //     setValue(1);
-  //   } else if (window.location.pathname === "/portfolio" && value !== 2) {
-  //     setValue(2);
-  //   } else if (window.location.pathname === "/service" && value !== 3) {
-  //     setValue(3);
-  //   } else if (window.location.pathname === "/contact" && value !== 4) {
-  //     setValue(4);
-  //   }
-  // }, [value]);
 
+  const MySwal = withReactContent(Swal);
+
+  function showMessage() {
+  
+    MySwal.fire({
+      title: "Welcome to Houseparty",
+      text: "Better Food, Better Coffee",
+      imageUrl:
+        "https://cdn.dribbble.com/users/1048574/screenshots/3553221/housepartyanim2.gif",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Logo",
+    });
+  }
+ 
   return (
     <>
       <ElevationScroll>
-        <AppBar position="fixed"   color="secondary">
+        <AppBar position="fixed" color="secondary">
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <img src={Logo} alt="company logo" className={classes.logo} />
 
@@ -182,8 +180,8 @@ export default function Header(props) {
                 to="/service"
                 label="Service"
               />
-     
-     <Tab
+
+              <Tab
                 className={classes.tab}
                 component={Link}
                 to="/faqs"
@@ -201,7 +199,12 @@ export default function Header(props) {
               variant="contained"
               color="primary"
               // className={classes.button}
-              sx={{ display: { xs: "none", md: "flex" }, borderRadius: "20px" }}
+              sx={{
+                display: { xs: "none", md: "flex" },
+                borderRadius: "20px",
+                backgroundColor: "#D61355",
+              }}
+              onClick={showMessage}
             >
               Get Started
             </Button>
@@ -239,32 +242,32 @@ export default function Header(props) {
                       >
                         <MenuItem onClick={handleClose}>
                           <Link to="/service/anroid" className={classes.link}>
-                          Graphic Designer
+                            Graphic Designer
                           </Link>
                         </MenuItem>
-                     <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleClose}>
                           <Link to="/service/web" className={classes.link}>
-                          Website Development
+                            Website Development
                           </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
                           <Link to="/service/apps" className={classes.link}>
-                          Product Designer
+                            Product Designer
                           </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
                           <Link to="/service/apps" className={classes.link}>
-                          Blog Writing
+                            Blog Writing
                           </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
                           <Link to="/service/apps" className={classes.link}>
-                          Digital Marketing
+                            Digital Marketing
                           </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
                           <Link to="/service/apps" className={classes.link}>
-                          App Development
+                            App Development
                           </Link>
                         </MenuItem>
                       </MenuList>
@@ -283,7 +286,7 @@ export default function Header(props) {
         open={drawerOpen}
         PaperProps={{
           style: {
-            backgroundColor: "red",
+            backgroundColor: "#D61355",
           },
         }}
         onClose={toggleDrawer(false)}

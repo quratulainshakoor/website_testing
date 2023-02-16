@@ -22,11 +22,11 @@ const theme = createTheme({
   typography : {
   
     h2: {
-      marginTop: "70px",
+      marginTop: "200px",
       fontFamily: "Raleway",
       fontSize: "2.8rem",
       lineHeight :" 3.5rem",
-      color:" #D61355",
+      color:" #0B7289",
       fontWeight: 700,
     },
 
