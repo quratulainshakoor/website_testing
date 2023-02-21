@@ -6,7 +6,7 @@ import instagram from "../assets/images/instagram.svg";
 import twitter from "../assets/images/twitter.svg";
 import Logo from "../assets/images/logoheader.png";
 import Grid from "@mui/material/Grid";
-
+import Box from "@mui/material/Box";
 const useStyles = makeStyles((theme) => ({
   footer: {
     // backgroundColor: theme.palette.common.orange,
@@ -47,20 +47,17 @@ const useStyles = makeStyles((theme) => ({
   // },
 
   logo: {
-    width: "250px",
+    width: "300px",
     marginTop: "40px",
-    marginBottom: "20px",
-    marginLeft : '10px'
+marginLeft:'20px'
   },
 
   icon: {
     height: "2em",
     width: " 3em",
-   
   },
   socailContainer: {
     paddingRight: "20px",
-  
   },
 }));
 const Footer = () => {
@@ -69,8 +66,16 @@ const Footer = () => {
   return (
     <>
       <footer className={classes.footer}>
-        <Grid container>
-          {/* <Grid
+        <Box>
+          <Grid
+            container
+            sx={{
+              display: { xs: "flex", md: "flex", sm: "flex" },
+              justifyContent: { xs: "center", md: "left", sm: "center" },
+              alignItem: { xs: "center", md: "left", sm: "center" },
+            }}
+          >
+            {/* <Grid
             item
             xs={3}
             sx={{
@@ -82,38 +87,59 @@ const Footer = () => {
            
           </Grid> */}
 
-          <Grid item xs={12}>
-            <Grid item>
+            <Grid item xs={12}>
               <img alt="Logo" src={Logo} className={classes.logo} />
             </Grid>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6} md={3}>
+            <Grid
+              lg={12}
+              item
+              container
+              spacing={2}
+              sx={{
+                display: { xs: "flex", md: "flex", sm: "flex" },
+                margin: "20px 40px",
+                "& p": {
+                  textAlign: { xs: "center", md: "left" },
+                },
+              }}
+            >
+              <Grid item lg={2} xs={12}>
                 <p>Home</p>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid item lg={2} xs={12}>
                 <p>Portfolio</p>
                 <p>Designs</p>
                 <p>Projects</p>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid item lg={2} xs={12}>
                 <p>Services</p>
                 <p>App Development</p>
                 <p>Website Development</p>
                 <p>Anroid Development</p>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid item lg={2} xs={12}>
                 <p>About Us</p>
                 <p>Vision</p>
                 <p>Mision</p>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid item lg={2} xs={12}>
                 <p>Contact Us</p>
+              </Grid>
+              <Grid item lg={2} xs={12}>
+                <p>Faqs</p>
               </Grid>
             </Grid>
 
             <Grid
+              lg={12}
               container
-              justifyContent={"right"}
+              sx={{
+                display: { xs: "flex", md: "flex", sm: "flex" },
+                justifyContent: { xs: "center", md: "right", sm: "center" },
+                alignItem: { xs: "center", sm: "center", md: "right" },
+                marginBottom: "20px",
+              }}
+              // justifyContent={"right"}
               spacing={2}
               className={classes.socailContainer}
             >
@@ -128,7 +154,6 @@ const Footer = () => {
                   alt="facebook logo"
                   src={facebook}
                   className={classes.icon}
-             
                 />
               </Grid>
               <Grid
@@ -159,7 +184,17 @@ const Footer = () => {
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+
+          <Grid item sx={{ textAlign: "center", color: "white" }}>
+            © 2020 Copyright:
+            <a
+              href="https://google.com/"
+              style={{ color: "#fff", marginLeft: "10px" }}
+            >
+              www.houseparty.com
+            </a>
+          </Grid>
+        </Box>
       </footer>
     </>
   );

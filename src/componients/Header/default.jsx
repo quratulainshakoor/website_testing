@@ -9,7 +9,7 @@ import Tab from "@mui/material/Tab";
 import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Box,
   ClickAwayListener,
@@ -21,8 +21,8 @@ import {
   Paper,
   Popper,
   List,
-  ListItem,
-  ListItemText,
+  ListItem ,
+   ListItemText
 } from "@mui/material";
 // import Divider from '@mui/material/Divider';
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
@@ -63,10 +63,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "16px",
     color: "#000",
   },
-  activeLink: {
-    color: "green",
-  },
-
   // button: {
   //   ...theme.Typography.estimate,
   //   borderRadius: "100px !important",
@@ -82,19 +78,12 @@ export default function Header(props) {
   // const [anchoreEl, setAnchoreEl] = useState(null);
   const [open, setOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  // const [active, setActive] = useState(false);
-  const anchorRef = React.useRef(null);
-  // const navigate = useNavigate();
 
- 
+  const anchorRef = React.useRef(null);
 
   const handlerChange = (e, value) => {
     setValue(value);
   };
-
-  // const handleClick = () => {
-  //   setActive(!active);
-  // };
 
   // const handlerOpen = (e) => {
   //   setAnchoreEl(e.currentTarget);
@@ -119,191 +108,12 @@ export default function Header(props) {
 
   const list = () => (
     <Box
-      sx={{ width: "30vw" }}
+      sx={{ width: 250 }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <List>
-        <ListItem
-          component={NavLink}
-          activeClassName={({ isActive }) =>
-            isActive ? classes.activeLink : undefined
-          }
-          to="/"
-        >
-          <ListItemText primary="HOme" />
-        </ListItem>
-        <ListItem
-          component={NavLink}
-          activeClassName={({ isActive }) =>
-            isActive ? classes.activeLink : undefined
-          }
-          to="/service"
-        >
-          <ListItemText primary="service" />
-        </ListItem>
-        <ListItem
-          component={NavLink}
-          activeClassName={({ isActive }) =>
-            isActive ? classes.activeLink : undefined
-          }
-          to="/about"
-        >
-          <ListItemText primary="About" />
-        </ListItem>
-      </List>
-      {/* <List>
-        <ListItem
-          onClick={() => {
-            navigate("/");
-            
-          }}
-
-          sx={{
-            width: "100%",
-            border: "3px solid #D61355",
-            textAlign: "center",
-            margin:'5px 1px',
-            // backgroundColor: active ? "#D61355" : "#0B7289" ,
-            // color: active ? "grey" : "white",
-
-            
-          
-          }}
-        >
-          <ListItemText
-            sx={{
-              "& > span": {
-                fontSize: 30,
-    
-             
-              },
-            }}
-            // onClick={handleClick}
-
-            primary="Home"
-          />
-        </ListItem>
-        <ListItem
-          onClick={() => {
-            navigate("/about");
-          }}
-          sx={{
-            // backgroundColor: active ? "#D61355" : "#0B7289" ,
-            // color: active ? "grey" : "white",
-            width: "100%",
-            border: "3px solid #D61355",
-            textAlign: "center",
-            margin:'5px 1px',
-          }}
-        >
-          <ListItemText
-            sx={{
-              "& > span": {
-                fontSize: 30,
-              },
-            }}
-            // onClick={handleClick}
-            primary="AboutUs"
-          />
-        </ListItem>
-        <ListItem
-          onClick={() => {
-            navigate("/service");
-          }}
-          sx={{
-            // backgroundColor: active ? "#D61355" : "#0B7289" ,
-            // color: active ? "grey" : "white",
-            width: "100%",
-            border: "3px solid #D61355",
-            textAlign: "center",
-            margin:'5px 1px',
-          }}
-        >
-          <ListItemText
-            sx={{
-              "& > span": {
-                fontSize: 30,
-               
-              },
-            }}
-            // onClick={handleClick}
-            primary="Services"
-          />
-        </ListItem>
-        <ListItem
-          onClick={() => {
-            navigate("/faqs");
-          }}
-          
-          sx={{
-            // backgroundColor: active ? "#D61355" : "#0B7289" ,
-            // color: active ? "grey" : "white",
-            width: "100%",
-            border: "3px solid #D61355",
-            textAlign: "center",
-            margin:'5px 1px',
-          }}
-        >
-          <ListItemText
-            sx={{
-              "& > span": {
-                fontSize: 30,
-              },
-            }}
-            // onClick={handleClick}
-            primary="Faqs"
-          />
-        </ListItem>
-        <ListItem
-          onClick={() => {
-            navigate("/portfolio");
-            
-          }}
-          sx={{
-            // backgroundColor: active ? "#D61355" : "#0B7289" ,
-            // color: active ? "grey" : "white",
-            width: "100%",
-            border: "3px solid #D61355",
-            textAlign: "center",
-            margin:'5px 1px',
-          }}
-        >
-          <ListItemText
-            sx={{
-              "& > span": {
-                fontSize: 30,
-              },
-            }}
-            // onClick={handleClick}
-            primary="Portfolio"
-          />
-        </ListItem>
-        <ListItem
-          onClick={() => {
-            navigate("/contact");
-          }}
-          sx={{
-            // backgroundColor: active ? "#D61355" : "#0B7289" ,
-            // color: active ? "grey" : "white",
-            width: "100%",
-            border: "3px solid #D61355",
-            textAlign: "center",
-            margin:'5px 1px',
-          }}
-        >
-          <ListItemText
-            sx={{
-              "& > span": {
-                fontSize: 30,
-              },
-            }}
-            // onClick={handleClick}
-            primary="Contact Us"
-          />
-        </ListItem>
-      </List> */}
+      Home About Services Contact
     </Box>
   );
 
@@ -321,6 +131,7 @@ export default function Header(props) {
   const MySwal = withReactContent(Swal);
 
   function showMessage() {
+  
     MySwal.fire({
       title: "Welcome to Houseparty",
       text: "Better Food, Better Coffee",
@@ -331,7 +142,7 @@ export default function Header(props) {
       imageAlt: "Logo",
     });
   }
-
+ 
   return (
     <>
       <ElevationScroll>
@@ -389,7 +200,6 @@ export default function Header(props) {
             </Tabs>
 
             <Button
-              xs
               variant="contained"
               color="primary"
               // className={classes.button}
@@ -480,7 +290,7 @@ export default function Header(props) {
         open={drawerOpen}
         PaperProps={{
           style: {
-            backgroundColor: "#FFBA60",
+            backgroundColor: "#D61355",
           },
         }}
         onClose={toggleDrawer(false)}

@@ -42,7 +42,7 @@ const Portfolio = () => {
   return (
     <>
   
-      <Container maxWidth="lg">
+      <Container maxWidth="lg"   >
  
         <ImageList variant="masonry" cols={3} gap={9}>
           {itemData.map((item) => (
